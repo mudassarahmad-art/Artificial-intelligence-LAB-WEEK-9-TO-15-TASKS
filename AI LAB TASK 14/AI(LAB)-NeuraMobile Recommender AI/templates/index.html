@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NeuraMobile Recommender AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>NeuraMobile <span>AI</span></h1>
+        <p>Smartphone Recommendation System</p>
+        <small>Developed by Mudassar Ahmad</small>
+    </header>
+
+    <!-- FORM -->
+    <div class="card">
+
+        <form method="POST">
+
+            <input name="budget" type="number" placeholder="Budget (PKR)" required>
+            <input name="ram" type="number" placeholder="RAM (GB)" required>
+            <input name="battery" type="number" placeholder="Battery (mAh)" required>
+            <input name="camera" type="number" placeholder="Camera (MP)" required>
+
+            <button type="submit">Get Recommendations</button>
+
+        </form>
+
+    </div>
+
+    <!-- REPORT -->
+    {% if avg_price %}
+    <div class="report">
+        <h3>Intelligence Report</h3>
+        {{ avg_price | safe }}
+    </div>
+    {% endif %}
+
+    <!-- TABLE -->
+    {% if table_html %}
+    <div class="table-box">
+        {{ table_html | safe }}
+    </div>
+    {% endif %}
+
+    <!-- MAP -->
+    <div class="map-box">
+        <h3>Mobile Shops Near You</h3>
+
+        <iframe
+            src="https://www.google.com/maps?q=mobile+shops+near+me&output=embed"
+            width="100%"
+            height="300"
+            style="border:0; border-radius:10px;">
+        </iframe>
+
+    </div>
+
+</div>
+
+</body>
+</html>
